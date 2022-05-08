@@ -226,9 +226,9 @@ async def mokke(ctx, member: discord.Member=None):
         await ctx.send("**You must mention a user to use this command!**")
     elif member.id == 955611964560777236:
         image_list = [
-            r"C:\Users\avery\Documents\codingexercises\hanakobot\mokke\MD_2.jpg",
-            r"C:\Users\avery\Documents\codingexercises\hanakobot\mokke\MD_3.jpg",
-            r"C:\Users\avery\Documents\codingexercises\hanakobot\mokke\MD_16.jpg"
+            r"\Documents\codingexercises\hanakobot\mokke\MD_2.jpg",
+            r"\Documents\codingexercises\hanakobot\mokke\MD_3.jpg",
+            r"\Documents\codingexercises\hanakobot\mokke\MD_16.jpg"
             ]
         image = choice(image_list)
         await ctx.send("**You don't need to send Mokke to give me candy. I am Mokke.**", file=discord.File(image))
@@ -238,13 +238,13 @@ async def mokke(ctx, member: discord.Member=None):
     else:
         receiver = f"<@{member.id}>"
         image_list = [
-            r"C:\Users\avery\Documents\codingexercises\hanakobot\mokke\mokkecandy.gif",
-            r"C:\Users\avery\Documents\codingexercises\hanakobot\mokke\mokke_candy.png",
-            r"C:\Users\avery\Documents\codingexercises\hanakobot\mokke\mokkelounge.gif",
-            r"C:\Users\avery\Documents\codingexercises\hanakobot\mokke\many_mokke.png",
-            r"C:\Users\avery\Documents\codingexercises\hanakobot\mokke\mokke_delivery.png",
-            r"C:\Users\avery\Documents\codingexercises\hanakobot\mokke\mokke_milkshake.png",
-            r"C:\Users\avery\Documents\codingexercises\hanakobot\mokke\mokke_hunting.png",
+            r"\Documents\codingexercises\hanakobot\mokke\mokkecandy.gif",
+            r"\Documents\codingexercises\hanakobot\mokke\mokke_candy.png",
+            r"\Documents\codingexercises\hanakobot\mokke\mokkelounge.gif",
+            r"\Documents\codingexercises\hanakobot\mokke\many_mokke.png",
+            r"\Documents\codingexercises\hanakobot\mokke\mokke_delivery.png",
+            r"\Documents\codingexercises\hanakobot\mokke\mokke_milkshake.png",
+            r"\Documents\codingexercises\hanakobot\mokke\mokke_hunting.png",
             ]
         image = choice(image_list)
         if image == image_list[0] or image == image_list[1]:
