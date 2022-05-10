@@ -83,8 +83,8 @@ async def test(ctx):
     chosen_image = choice(image)
     await ctx.send("Huh? What? I'm awake, hello!", file=discord.File(chosen_image))
 
-@kiss.error
-async def kiss_error(ctx, error):
+@test.error
+async def test_error(ctx, error):
     if isinstance(error, discord.ext.commands.CommandError):
         await ctx.send("Snzz... Let me go back to sleep.")
 
