@@ -56,6 +56,8 @@ def jshk_release():
     return f"There are {days} days, {hours} hours, and {minutes} minutes until the next Toilet Bound Hanako Kun chapter."
     #make that return look pretty PLEASE. it works but damn its ugly
 
+#/home/averyarmstrong/HanakoBot/Documents/codingexercises/hanakobot/example_bot.py
+
 @bot.command()
 async def chapter(ctx):
     """
@@ -75,11 +77,16 @@ async def todo(ctx):
 @bot.command()
 async def test(ctx):
     image = [
-        r"physical_labor.jpg",
-        r"peaceout.jpg"
+        r"/home/averyarmstrong/HanakoBot/Documents/codingexercises/hanakobot/physical_labor.jpg",
+        r"/home/averyarmstrong/HanakoBot/Documents/codingexercises/hanakobot/peaceout.jpg"
         ]
     chosen_image = choice(image)
     await ctx.send("Huh? What? I'm awake, hello!", file=discord.File(chosen_image))
+
+@kiss.error
+async def kiss_error(ctx, error):
+    if isinstance(error, discord.ext.commands.CommandError):
+        await ctx.send("Snzz... Let me go back to sleep.")
 
 @bot.command()
 async def choose(ctx, *args):
@@ -262,25 +269,25 @@ async def mokke(ctx, member: discord.Member=None):
         await ctx.send("**You must mention a user to use this command!**")
     elif member.id == 955611964560777236:
         image_list = [
-            r"mokke\MD_2.jpg",
-            r"mokke\MD_3.jpg",
-            r"mokke\MD_16.jpg"
+            r"/home/averyarmstrong/HanakoBot/Documents/codingexercises/hanakobot/mokke/MD_2.jpg",
+            r"/home/averyarmstrong/HanakoBot/Documents/codingexercises/hanakobot/mokke/MD_3.jpg",
+            r"/home/averyarmstrong/HanakoBot/Documents/codingexercises/hanakobot/mokke/MD_16.jpg"
             ]
         image = choice(image_list)
         await ctx.send("**You don't need to send Mokke to give me candy. I am Mokke.**", file=discord.File(image))
     elif member.id == ctx.author.id:
-        image = r"mokke\mokke_horde.jpg"
+        image = r"/home/averyarmstrong/HanakoBot/Documents/codingexercises/hanakobot/mokke/mokke_horde.jpg"
         await ctx.send("**You shall become one with the Mokke.**", file=discord.File(image))
     else:
         receiver = f"<@{member.id}>"
         image_list = [
-            r"mokke\mokkecandy.gif",
-            r"mokke\mokke_candy.png",
-            r"mokke\mokkelounge.gif",
-            r"mokke\many_mokke.png",
-            r"mokke\mokke_delivery.png",
-            r"mokke\mokke_milkshake.png",
-            r"mokke\mokke_hunting.png",
+            r"/home/averyarmstrong/HanakoBot/Documents/codingexercises/hanakobot/mokke/mokkecandy.gif",
+            r"/home/averyarmstrong/HanakoBot/Documents/codingexercises/hanakobot/mokke/mokke_candy.png",
+            r"/home/averyarmstrong/HanakoBot/Documents/codingexercises/hanakobot/mokke/mokkelounge.gif",
+            r"/home/averyarmstrong/HanakoBot/Documents/codingexercises/hanakobot/mokke/many_mokke.png",
+            r"/home/averyarmstrong/HanakoBot/Documents/codingexercises/hanakobot/mokke/mokke_delivery.png",
+            r"/home/averyarmstrong/HanakoBot/Documents/codingexercises/hanakobot/mokke/mokke_milkshake.png",
+            r"/home/averyarmstrong/HanakoBot/Documents/codingexercises/hanakobot/mokke/mokke_hunting.png",
             ]
         image = choice(image_list)
         if image == image_list[0] or image == image_list[1]:
