@@ -58,6 +58,9 @@ def jshk_release():
 
 @bot.command()
 async def chapter(ctx):
+    """
+    Tells the time until the next TBHK chapter release. (For reference, this is on the 18th of every month at midnight in Japan.)
+    """
     await ctx.send(f'{jshk_release()}')
 
 @bot.command()
@@ -80,6 +83,9 @@ async def test(ctx):
 
 @bot.command()
 async def choose(ctx, *args):
+    """
+    Give HanakoBot a list of options divided by "|", and it will return an option for you!
+    """
     user = ctx.author.mention
     choices = ' '.join(args)
     if choices == "":
@@ -141,7 +147,7 @@ async def kiss_error(ctx, error):
 @bot.command()
 async def comfort(ctx, member: discord.Member=None):
     """
-    Send a TBHK character to cheer somebody up! Mention the user in the command, or just send +comfort to have the bot comfort you instead. Please note that this command can only proccess one mention at a time!
+    Send a TBHK character to cheer somebody up! Mention the user in the command, or mention nobody to have the bot comfort you instead.
     """
     user = ctx.author.mention
     if member == "@everyone":
@@ -190,6 +196,9 @@ async def comfort_error(ctx, error):
 
 @bot.command()
 async def hug(ctx, member: discord.Member=None):
+    """
+    Mention a user to give them a hug!
+    """
     user = ctx.author.mention
     if member == None:
         await ctx.send("**You must mention a user to use this command! Or maybe you want a hug from me...?**")
@@ -245,6 +254,9 @@ async def hug_error(ctx, error):
 
 @bot.command()
 async def mokke(ctx, member: discord.Member=None):
+    """
+    Send the Mokke to give the user you mentioned a candy. However, the Mokke may not always listen to what you want them to do...
+    """
     user = ctx.author.mention
     if member == None:
         await ctx.send("**You must mention a user to use this command!**")
