@@ -209,14 +209,13 @@ async def hug(ctx, member: discord.Member=None):
     user = ctx.author.mention
     if member == None:
         await ctx.send("**You must mention a user to use this command! Or maybe you want a hug from me...?**")
-    
     elif member.id == 955611964560777236:
         hugs = [
             f"**{user}, you can't hug me! I'm a ghost after all.**",
             f"**{user} tries to hug Hanako... they pass right through him, but feel a chill pass through them.**"
             ]
         hug = choice(hugs)
-        await ctx.send(hugs)
+        await ctx.send(hug)
     elif member.id == ctx.author.id:
         hugs = [
             f"**Aww... {user}, do you need a hug?**",
@@ -224,19 +223,19 @@ async def hug(ctx, member: discord.Member=None):
             f"**{user} hugs a life-size plush of themselves. It's kind of cute... maybe?**"
             ]
         hug = choice(hugs)
-        await ctx.send(hugs)
+        await ctx.send(hug)
     else:
         receiver = f"<@{member.id}>"
         hugs = [
-        f"**{user} wraps their arms around {receiver} in a big bear hug.**",
-        f"**{user} just sent a hug request! Do you accept, {receiver}?**",
-        f"**{receiver} nearly falls over after being suprised by a tackle hug from {user}.**",
-        f"**{user} offers warm hugs to comfort {receiver}, gently patting their back. There, there...**",
-        f"**{receiver}, there is no escape from {user}'s hugs!**",
-        f"**{user} thinks that it's {receiver} they're hugging, but it's actually just a life-size plush of them.**"
-        ]
-    hug = choice(hugs)
-    await ctx.send(hug)
+            f"**{user} wraps their arms around {receiver} in a big bear hug.**",
+            f"**{user} just sent a hug request! Do you accept, {receiver}?**",
+            f"**{receiver} nearly falls over after being suprised by a tackle hug from {user}.**",
+            f"**{user} offers warm hugs to comfort {receiver}, gently patting their back. There, there...**",
+            f"**{receiver}, there is no escape from {user}'s hugs!**",
+            f"**{user} thinks that it's {receiver} they're hugging, but it's actually just a life-size plush of them.**"
+            ]
+        hug = choice(hugs)
+        await ctx.send(hug)
 
 @hug.error
 async def hug_error(ctx, error):
