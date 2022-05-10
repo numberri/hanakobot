@@ -236,7 +236,7 @@ async def hug(ctx, member: discord.Member=None):
         f"**{user} thinks that it's {receiver} they're hugging, but it's actually just a life-size plush of them.**"
         ]
     hug = choice(hugs)
-    await ctx.send(hugs)
+    await ctx.send(hug)
 
 @hug.error
 async def hug_error(ctx, error):
