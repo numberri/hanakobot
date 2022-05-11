@@ -173,39 +173,38 @@ async def comfort(ctx, member: discord.Member=None):
     #elif member == "everyone" or member == "here" or member == "@here" or member == "everybody":
     #    await ctx.send("**<:hk_yay:964912514179674203> Hanako calls a meeting with all the school mysteries... to organize the school supernaturals to cheer everybody up!**")
     #    member = ctx.author
+    if member == None or member.id == ctx.author.id:
+        receiver = f"<@{ctx.author.id}>"
     else:
-        if member == None or member.id == ctx.author.id:
-            receiver = f"<@{ctx.author.id}>"
-        else:
-            receiver = f"<@{member.id}>"
-        general_comforts = [
-            f"**<:mt_star:964954713705545827> Tiara gives {receiver} a bouquet of flowers! :bouquet:**",
-            f"**<:ty_hug:964958594195927041> Tsukasa hugs {receiver} so tight, he squishes out all sadness!**",
-            f"**<:mk_hehe:964948970147282986> {receiver} is feeling down. Kou made them some donuts to cheer them up and tightly hugs them.**",
-            f"**<:mokke1:965249524346024036> the Mokke bring {receiver} candy (and things they stole from students) to cheer them up.**",
-            f"**<:m_happy:964932907548430397> Mei draws a reality where {receiver} is never sad.**",
-            f"**<:aa_point:964952748799950879> \"I'm not exactly a fan of scary stories... but I'll tell you as many as you want, {receiver}, if it will help you feel better!\"**",
-            f"**<:yn_love:964940266844856340> Yashiro hugs {receiver} to cheer them up. The sweet aroma of strawberries fills the air!**",
-            f"**<:mk_fluster:973890909529862144> Kou is on {receiver}'s side! \"If there's anything getting you down... or anything... I hope you'll remember that I'm here for you.\"**",
-            f"**<:yn_love:964940266844856340> Nene has hired the Mokke delivery service to deliver {receiver} some homemade muffins to cheer them up!**"
-            ]
-        other_comforts = [
-            f"**<:sn_tired:964940862540877864> Sakura and {user} bring out tea for {receiver} to cheer them up.**"
-            ]
-        self_comforts = [
-            f"**<:sn_tired:964940862540877864> Sakura brings out tea for {receiver} to cheer them up.**"
-            ]
-        #japantimex = japantime()
-        # ^^^^^ MAKE THIS WORK
-        #add in an "if member = hanakobot" thing
-        #if japantimex[2] == 18 and japantimex[3] == 0:
-        #    comforts = ["**<:hn_hug:964907449515647057> Aww, was the new chapter that painful...?**"]
-        if member == None or member.id == ctx.author.id:
-            comforts = general_comforts + self_comforts
-        else:
-            comforts = general_comforts + other_comforts
-        chosen_comfort = choice(comforts)
-        await ctx.send(f'{chosen_comfort}')
+        receiver = f"<@{member.id}>"
+    general_comforts = [
+        f"**<:mt_star:964954713705545827> Tiara gives {receiver} a bouquet of flowers! :bouquet:**",
+        f"**<:ty_hug:964958594195927041> Tsukasa hugs {receiver} so tight, he squishes out all sadness!**",
+        f"**<:mk_hehe:964948970147282986> {receiver} is feeling down. Kou made them some donuts to cheer them up and tightly hugs them.**",
+        f"**<:mokke1:965249524346024036> the Mokke bring {receiver} candy (and things they stole from students) to cheer them up.**",
+        f"**<:m_happy:964932907548430397> Mei draws a reality where {receiver} is never sad.**",
+        f"**<:aa_point:964952748799950879> \"I'm not exactly a fan of scary stories... but I'll tell you as many as you want, {receiver}, if it will help you feel better!\"**",
+        f"**<:yn_love:964940266844856340> Yashiro hugs {receiver} to cheer them up. The sweet aroma of strawberries fills the air!**",
+        f"**<:mk_fluster:973890909529862144> Kou is on {receiver}'s side! \"If there's anything getting you down... or anything... I hope you'll remember that I'm here for you.\"**",
+        f"**<:yn_love:964940266844856340> Nene has hired the Mokke delivery service to deliver {receiver} some homemade muffins to cheer them up!**"
+        ]
+    other_comforts = [
+        f"**<:sn_tired:964940862540877864> Sakura and {user} bring out tea for {receiver} to cheer them up.**"
+        ]
+    self_comforts = [
+        f"**<:sn_tired:964940862540877864> Sakura brings out tea for {receiver} to cheer them up.**"
+        ]
+    #japantimex = japantime()
+    # ^^^^^ MAKE THIS WORK
+    #add in an "if member = hanakobot" thing
+    #if japantimex[2] == 18 and japantimex[3] == 0:
+    #    comforts = ["**<:hn_hug:964907449515647057> Aww, was the new chapter that painful...?**"]
+    if member == None or member.id == ctx.author.id:
+        comforts = general_comforts + self_comforts
+    else:
+        comforts = general_comforts + other_comforts
+    chosen_comfort = choice(comforts)
+    await ctx.send(f'{chosen_comfort}')
 
 @comfort.error #comfort.error
 async def comfort_error(ctx, error):
