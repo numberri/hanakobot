@@ -12,6 +12,7 @@ import discord.ext.commands.errors
 class HanakoBot(commands.Bot):
     #I have no idea what I am writing.
     async def on_ready(self):
+        await bot.change_presence(activity=discord.Game(name="+help | hanako-bot.carrd.co"))
         print('Logged in as')
         print(self.user.name)
         print(self.user.id)
@@ -53,10 +54,17 @@ def jshk_release():
             days = days + 30
     hours = 23 - int(tuplex[3])
     minutes = 60 - int(tuplex[4])
-    return f"There are {days} days, {hours} hours, and {minutes} minutes until the next Toilet Bound Hanako Kun chapter."
+    if days == 0 and hours == 0 and minutes == 0:
+        return "The newest Toilet Bound Hanako Kun chapter has just been released! <:hk_yay:964912514179674203>"
+    elif days == 0 and hours == 0:
+        return f"There are {minutes} minutes until the next Toilet Bound Hanako Kun chapter."
+    elif days == 0:
+        return f"There are {hours} hours and {minutes} minutes until the next Toilet Bound Hanako Kun chapter."
+    else:
+        return f"There are {days} days, {hours} hours, and {minutes} minutes until the next Toilet Bound Hanako Kun chapter."
     #make that return look pretty PLEASE. it works but damn its ugly
 
-#/home/averyarmstrong/HanakoBot/Documents/codingexercises/hanakobot/example_bot.py
+#/home/averyarmstrong/hanakobot/bot_main.py
 
 @bot.command()
 async def chapter(ctx):
@@ -77,8 +85,8 @@ async def todo(ctx):
 @bot.command()
 async def test(ctx):
     image = [
-        r"/home/averyarmstrong/HanakoBot/Documents/codingexercises/hanakobot/physical_labor.jpg",
-        r"/home/averyarmstrong/HanakoBot/Documents/codingexercises/hanakobot/peaceout.jpg"
+        r"/home/averyarmstrong/hanakobot/physical_labor.jpg",
+        r"/home/averyarmstrong/hanakobot/peaceout.jpg"
         ]
     chosen_image = choice(image)
     await ctx.send("Huh? What? I'm awake, hello!", file=discord.File(chosen_image))
@@ -137,7 +145,9 @@ async def kiss(ctx, member: discord.Member=None):
             f"**{user} tries to wake up {receiver} with a good-morning kiss, but accidentally startles them and gets headbutted.**",
             f'**"There are many different kinds of threats, Honorable Number 7!" {user} leans in to kiss {receiver} in order to threaten Hanako into helping them. (That was unfair! <:hk_dissapoint:964931557456482404>)**',
             f"**{receiver} has finally gotten the kiss from {user} they've been dreaming of... or at least they think, until they wake up.**",
-            f"**{user} and {receiver} share a sweet, sappy reunion kiss. Aww... <:yn_love:964940266844856340>**"
+            f"**{user} and {receiver} share a sweet, sappy reunion kiss. Aww... <:yn_love:964940266844856340>**",
+            f"**Month ⬤, day X... the weather is bright and sunny! Today's big event... {receiver} shares their first kiss with {user}!**",
+            f"**{user} is about to share a kiss with {receiver}, when... <:teru_small:973999293398663279> \"Uhh... Did I... interrupt something?\"**",
             ]
         kiss = choice(kiss_choice)
         await ctx.send(f'{kiss}')
@@ -157,12 +167,12 @@ async def comfort(ctx, member: discord.Member=None):
     Send a TBHK character to cheer somebody up! Mention the user in the command, or mention nobody to have the bot comfort you instead.
     """
     user = ctx.author.mention
-    if member == "@everyone":
-        await ctx.send("**<:hk_yay:964912514179674203> Hanako calls a meeting with all the school mysteries... to organize the school supernaturals to cheer everybody up! (Please use \"everyone\" without the mention to avoid pinging too mant people.)**")
-        member = ctx.author
-    elif member == "everyone" or member == "here" or member == "@here" or member == "everybody":
-        await ctx.send("**<:hk_yay:964912514179674203> Hanako calls a meeting with all the school mysteries... to organize the school supernaturals to cheer everybody up!**")
-        member = ctx.author
+    #if member == "@everyone":
+    #    await ctx.send("**<:hk_yay:964912514179674203> Hanako calls a meeting with all the school mysteries... to organize the school supernaturals to cheer everybody up! (Please use \"everyone\" without the mention to avoid pinging too mant people.)**")
+    #    member = ctx.author
+    #elif member == "everyone" or member == "here" or member == "@here" or member == "everybody":
+    #    await ctx.send("**<:hk_yay:964912514179674203> Hanako calls a meeting with all the school mysteries... to organize the school supernaturals to cheer everybody up!**")
+    #    member = ctx.author
     else:
         if member == None or member.id == ctx.author.id:
             receiver = f"<@{ctx.author.id}>"
@@ -174,7 +184,10 @@ async def comfort(ctx, member: discord.Member=None):
             f"**<:mk_hehe:964948970147282986> {receiver} is feeling down. Kou made them some donuts to cheer them up and tightly hugs them.**",
             f"**<:mokke1:965249524346024036> the Mokke bring {receiver} candy (and things they stole from students) to cheer them up.**",
             f"**<:m_happy:964932907548430397> Mei draws a reality where {receiver} is never sad.**",
-            f"**<:aa_point:964952748799950879> \"I'm not exactly a fan of scary stories... but I'll tell you as many as you want, {receiver}, if it will help you feel better!\"**"
+            f"**<:aa_point:964952748799950879> \"I'm not exactly a fan of scary stories... but I'll tell you as many as you want, {receiver}, if it will help you feel better!\"**",
+            f"**<:yn_love:964940266844856340> Yashiro hugs {receiver} to cheer them up. The sweet aroma of strawberries fills the air!**",
+            f"**<:mk_fluster:973890909529862144> Kou is on {receiver}'s side! \"If there's anything getting you down... or anything... I hope you'll remember that I'm here for you.\"**",
+            f"**<:yn_love:964940266844856340> Nene has hired the Mokke delivery service to deliver {receiver} some homemade muffins to cheer them up!**"
             ]
         other_comforts = [
             f"**<:sn_tired:964940862540877864> Sakura and {user} bring out tea for {receiver} to cheer them up.**"
@@ -232,7 +245,8 @@ async def hug(ctx, member: discord.Member=None):
             f"**{receiver} nearly falls over after being suprised by a tackle hug from {user}.**",
             f"**{user} offers warm hugs to comfort {receiver}, gently patting their back. There, there...**",
             f"**{receiver}, there is no escape from {user}'s hugs!**",
-            f"**{user} thinks that it's {receiver} they're hugging, but it's actually just a life-size plush of them.**"
+            f"**{user} thinks that it's {receiver} they're hugging, but it's actually just a life-size plush of them.**",
+            f"**Surprise hug! {user} gives {receiver} a hug from behind them suddenly, startling them a little bit.**"
             ]
         hug = choice(hugs)
         await ctx.send(hug)
@@ -268,33 +282,51 @@ async def mokke(ctx, member: discord.Member=None):
         await ctx.send("**You must mention a user to use this command!**")
     elif member.id == 955611964560777236:
         image_list = [
-            r"/home/averyarmstrong/HanakoBot/Documents/codingexercises/hanakobot/mokke/MD_2.jpg",
-            r"/home/averyarmstrong/HanakoBot/Documents/codingexercises/hanakobot/mokke/MD_3.jpg",
-            r"/home/averyarmstrong/HanakoBot/Documents/codingexercises/hanakobot/mokke/MD_16.jpg"
+            r"/home/averyarmstrong/hanakobot/mokke/MD_2.jpg",
+            r"/home/averyarmstrong/hanakobot/mokke/MD_3.jpg",
+            r"/home/averyarmstrong/hanakobot/mokke/MD_16.jpg"
             ]
         image = choice(image_list)
         await ctx.send("**You don't need to send Mokke to give me candy. I am Mokke.**", file=discord.File(image))
     elif member.id == ctx.author.id:
-        image = r"/home/averyarmstrong/HanakoBot/Documents/codingexercises/hanakobot/mokke/mokke_horde.jpg"
+        image = r"/home/averyarmstrong/hanakobot/mokke/mokke_horde.jpg"
         await ctx.send("**You shall become one with the Mokke.**", file=discord.File(image))
     else:
         receiver = f"<@{member.id}>"
         image_list = [
-            r"/home/averyarmstrong/HanakoBot/Documents/codingexercises/hanakobot/mokke/mokkecandy.gif",
-            r"/home/averyarmstrong/HanakoBot/Documents/codingexercises/hanakobot/mokke/mokke_candy.png",
-            r"/home/averyarmstrong/HanakoBot/Documents/codingexercises/hanakobot/mokke/mokkelounge.gif",
-            r"/home/averyarmstrong/HanakoBot/Documents/codingexercises/hanakobot/mokke/many_mokke.png",
-            r"/home/averyarmstrong/HanakoBot/Documents/codingexercises/hanakobot/mokke/mokke_delivery.png",
-            r"/home/averyarmstrong/HanakoBot/Documents/codingexercises/hanakobot/mokke/mokke_milkshake.png",
-            r"/home/averyarmstrong/HanakoBot/Documents/codingexercises/hanakobot/mokke/mokke_hunting.png",
+            r"/home/averyarmstrong/hanakobot/mokke/mokkecandy.gif",
+            r"/home/averyarmstrong/hanakobot/mokke/mokke_candy.png",
+            r"/home/averyarmstrong/mokke/mokkelounge.gif",
+            r"/home/averyarmstrong/hanakobot/mokke/many_mokke.png",
+            r"/home/averyarmstrong/hanakobot/mokke/mokke_delivery.png",
+            r"/home/averyarmstrong/hanakobot/mokke/mokke_milkshake.png",
+            r"/home/averyarmstrong/hanakobot/mokke/mokke_hunting.png",
             ]
         image = choice(image_list)
         if image == image_list[0] or image == image_list[1]:
-            await ctx.send(f'**"Want a candy?" A mokke offers a candy to {receiver}.**', file=discord.File(image))
+            message = [
+                f'**"Want a candy?" A mokke offers a candy to {receiver}.**',
+                f"**The Mokke are hesitant to share their candy with {receiver}, but decide to be generous.**",
+                f"**{receiver} is handed one lemon-flavored piece of candy. Reject candy is better than nothing...**",
+                f"**The Mokke are willing to give {receiver} as much candy as they want... as long as it's all lemon flavored.**"
+                ]
+            message_choice = choice(message)
+            await ctx.send(message_choice, file=discord.File(image))
         elif image == image_list[2] or image == image_list[3]:
-            await ctx.send(f"**{user} calls for a Mokke to give {receiver} a candy, but the Mokke do as they want.**", file=discord.File(image))
+            message = [
+                f"**{user} calls for a Mokke to give {receiver} a candy, but the Mokke do as they want.**",
+                f"**The Mokke would give {receiver} candy, but they have already eaten it all themselves...**",
+                f"**{user}'s request to give {receiver} candy somehow isn't heard by the Mokke's disproportionately large ears. (Or maybe it was just ignored...)**"
+                ]
+            message_choice = choice(message)
+            await ctx.send(message_choice, file=discord.File(image))
         elif image == image_list[4]:
-            await ctx.send(f"**Delivery from {user}! It's a package for {receiver} full of candy (and Mokke).**", file=discord.File(image))
+            message = [
+                f"**Delivery from {user}! It's a package for {receiver} full of candy (and Mokke).**",
+                f"**{receiver} receives a delivery of candy- wait, but the delivery fee needs to be paid in candy? This isn't fair! <:hk_shocked:964913449350070272>**"
+                ]
+            message_choice = choice(message)
+            await ctx.send(message_choice, file=discord.File(image))
         elif image == image_list[5]:
             await ctx.send(f"**The Mokke are out of candy (because they ate it all). However, they still have a milkshake for {receiver} to enjoy.**", file=discord.File(image))
         elif image == image_list[6]:
