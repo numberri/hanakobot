@@ -294,7 +294,7 @@ async def mokke(ctx, member: discord.Member=None):
         image_list = [
             r"/home/averyarmstrong/hanakobot/mokke/mokkecandy.gif",
             r"/home/averyarmstrong/hanakobot/mokke/mokke_candy.png",
-            r"/home/averyarmstrong/mokke/mokkelounge.gif",
+            r"/home/averyarmstrong/hanakobot/mokke/mokkelounge.gif",
             r"/home/averyarmstrong/hanakobot/mokke/many_mokke.png",
             r"/home/averyarmstrong/hanakobot/mokke/mokke_delivery.png",
             r"/home/averyarmstrong/hanakobot/mokke/mokke_milkshake.png",
