@@ -340,4 +340,4 @@ async def mokke_error(ctx, error):
         await ctx.send("Uh-oh, Avery made a mistake... (" + str(error) + ")")
             
 bot.run('OTU1NjExOTY0NTYwNzc3MjM2.YjkM_g.4OMkshGrC0Ml-YflykuVvo4T1Io')
-#version: 1.0.2.1
+#version: 1.0.3
