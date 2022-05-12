@@ -8,7 +8,6 @@ from discord.ext import commands
 from discord.ext.commands import bot
 import discord.ext.commands.errors
 
-
 class HanakoBot(commands.Bot):
     #I have no idea what I am writing.
     async def on_ready(self):
@@ -94,7 +93,7 @@ async def test(ctx):
 @test.error
 async def test_error(ctx, error):
     if isinstance(error, discord.ext.commands.CommandError):
-        await ctx.send("Snzz... Let me go back to sleep.")
+        await ctx.send("Snzz... Let me go back to sleep. (" + str(error) + ")")
 
 @bot.command()
 async def choose(ctx, *args):
@@ -159,7 +158,7 @@ async def kiss_error(ctx, error):
     if isinstance(error, discord.ext.commands.errors.MemberNotFound):
         await ctx.send("Uhh... sorry, who are you talking about?")
     elif isinstance(error, discord.ext.commands.CommandError):
-        await ctx.send("Uh-oh, Avery made a mistake...")
+        await ctx.send("Uh-oh, Avery made a mistake... (" + str(error) + ")")
 
 @bot.command()
 async def comfort(ctx, member: discord.Member=None):
@@ -211,7 +210,7 @@ async def comfort_error(ctx, error):
     if isinstance(error, discord.ext.commands.errors.MemberNotFound):
         await ctx.send("Uhh... sorry, who are you talking about?")
     elif isinstance(error, discord.ext.commands.CommandError):
-        await ctx.send("Uh-oh, Avery made a mistake...")
+        await ctx.send("Uh-oh, Avery made a mistake... (" + str(error) + ")")
 
 @bot.command()
 async def hug(ctx, member: discord.Member=None):
@@ -255,7 +254,7 @@ async def hug_error(ctx, error):
     if isinstance(error, discord.ext.commands.errors.MemberNotFound):
         await ctx.send("Uhh... sorry, who are you talking about?")
     elif isinstance(error, discord.ext.commands.CommandError):
-        await ctx.send("Uh-oh, Avery made a mistake...")
+        await ctx.send("Uh-oh, Avery made a mistake... (" + str(error) + ")")
 
 #Sakura: <:sn_tired:964940862540877864>
 #Hanako hug: <:hn_hug:964907449515647057>
@@ -338,6 +337,7 @@ async def mokke_error(ctx, error):
     if isinstance(error, discord.ext.commands.errors.MemberNotFound):
         await ctx.send("Uhh... sorry, who are you talking about?")
     elif isinstance(error, discord.ext.commands.CommandError):
-        await ctx.send("Uh-oh, Avery made a mistake...")
+        await ctx.send("Uh-oh, Avery made a mistake... (" + str(error) + ")")
             
 bot.run('OTU1NjExOTY0NTYwNzc3MjM2.YjkM_g.4OMkshGrC0Ml-YflykuVvo4T1Io')
+#version: 1.0.2.1
