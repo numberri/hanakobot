@@ -96,6 +96,15 @@ async def test_error(ctx, error):
         await ctx.send("Snzz... Let me go back to sleep. (" + str(error) + ")")
 
 @bot.command()
+async def throwerror(ctx):
+    raise NotImplementedError
+
+@throwerror.error
+async def kiss_error(ctx, error):
+    if isinstance(error, NotImplementedError):
+        await ctx.send("Uh-oh, Avery made a mistake... (" + str(error) + ")\nYou can report this error in the HanakoBot test server! https://discord.com/invite/ANb3v6bHvx")
+
+@bot.command()
 async def choose(ctx, *args):
     """
     Give HanakoBot a list of options divided by "|", and it will return an option for you!
@@ -123,7 +132,8 @@ async def kiss(ctx, member: discord.Member=None):
     elif member.id == 955611964560777236:
         kiss_choice = [
             "<:hk_blush:964948035371163688>",
-            "<:hk_kiss:964947590259032109> **Huh? You want me to kiss you?**"
+            "<:hk_kiss:964947590259032109> **Huh? You want me to kiss you?**",
+            "<:hk_nothanks:964930571178475520> **I don't think Yashiro would be happy with you kissing me like that...**"
             ]
         kiss = choice(kiss_choice)
         await ctx.send(f'{kiss}')
@@ -158,7 +168,7 @@ async def kiss_error(ctx, error):
     if isinstance(error, discord.ext.commands.errors.MemberNotFound):
         await ctx.send("Uhh... sorry, who are you talking about?")
     elif isinstance(error, discord.ext.commands.CommandError):
-        await ctx.send("Uh-oh, Avery made a mistake... (" + str(error) + ")")
+        await ctx.send("Uh-oh, Avery made a mistake... (" + str(error) + ")\nYou can report this error in the HanakoBot test server! https://discord.com/invite/ANb3v6bHvx")
 
 @bot.command()
 async def comfort(ctx, member: discord.Member=None):
@@ -246,6 +256,7 @@ async def hug(ctx, member: discord.Member=None):
             f"**{user} thinks that it's {receiver} they're hugging, but it's actually just a life-size plush of them.**",
             f"**Surprise hug! {user} gives {receiver} a hug from behind them suddenly, startling them a little bit.**"
             ]
+            #{user} hugs {receiver} forever and eternally, until the end of time.
         hug = choice(hugs)
         await ctx.send(hug)
 
