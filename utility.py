@@ -1,5 +1,6 @@
 from random import choice
 from random import randint
+import asyncio
 
 from discord.ext import commands
 from discord.ext.commands import bot
@@ -63,6 +64,35 @@ class Utility(commands.Cog):
             elif n == 1:
                 tails += 1
         await ctx.send(f"**You flipped {coins} coins!**\nHeads: **{heads}**\nTails: **{tails}**")
+
+    @commands.command()
+    async def remind(self, ctx, time, unit, *args):
+        """
+Hanako gives you a reminder in a given amount of time.
+        """
+        user = ctx.author.mention
+        req = ""
+        for item in args:
+            req = req + item + " "
+        req = req.strip()
+        try:
+            x = int(time)
+        except:
+            await ctx.send("Please enter a time for me to remind you in! Make sure to enter a number for time as well as a unit.")
+        unit = unit.lower()
+        if unit == "s" or unit == "second" or unit == "seconds" or unit == "sec" or unit == "secs":
+            secs = x
+        elif unit == "m" or unit == "minutes" or unit == "minute" or unit == "min" or unit == "mins":
+            secs = x * 60
+        elif unit == "h" or unit == "hour" or unit == "hours":
+            secs = x * 3600
+        elif unit == "d" or unit == "day" or unit == "days":
+            secs = x * 86400
+        else:
+            raise NotImplementedError
+        await ctx.send(f"**Reminding you to {req} in {time} {unit}!**")
+        await asyncio.sleep(secs)
+        await ctx.send(f"**{user} {req} ({time} {unit} ago)**")    
         
 def setup(bot: HanakoBot):
     cog = Utility(bot)
