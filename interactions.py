@@ -362,29 +362,34 @@ delivery fee needs to be paid in candy? This isn't fair! \
                         + ")\nYou can report this error in the HanakoBot " +
                         "test server! https://discord.com/invite/ANb3v6bHvx")
 
-    @commands.command()
-    async def kill(self, ctx, member: discord.Member=None):
-        user = ctx.author.mention
-        if member == None:
-            await ctx.send("**You need to mention your target to use this command...**")
-        elif member.id == 955611964560777236: #if user is hanakobot
-            options = [
-                "**You can't kill me, I'm already dead!**",
-                "**I think I'm dying... That was a joke. I'm already dead.**",
-                "**WOW, that was scary! I thought I was going to die... Oh, \
-yeah. I died already...",
-                
-            ]
-            chosen = choice(options)
-            await ctx.send(chosen)
-        elif member.id == member.id: #if user is self
-            options = []
-            chosen = choice(options)
-            await ctx.send(chosen)
-        else:
-            options = []
-            chosen = choice(options)
-            await ctx.send(chosen)
+#    @commands.command()
+#    async def kill(self, ctx, member: discord.Member=None):
+#        user = ctx.author.mention
+#        if member == None:
+#            await ctx.send("**You need to mention your target to use this command...**")
+#        elif member.id == 955611964560777236: #if user is hanakobot
+#            options = [
+#                "**You can't kill me, I'm already dead!**",
+#                "**I think I'm dying... That was a joke. I'm already dead.**",
+#                "**WOW, that was scary! I thought I was going to die... Oh, \
+#yeah. I died already..."
+#            ]
+#            chosen = choice(options)
+#            await ctx.send(chosen)
+#        elif member.id == member.id: #if user is self
+#            options = [
+#                "<:hk_stare:964958157673750650> **Are you okay...? Do you need a hug?**"
+#            ]
+#            #come up with more options
+#            chosen = choice(options)
+#            await ctx.send(chosen)
+#        else:
+#            receiver = f"<@{member.id}>"
+#            options = [
+#                ""
+#            ]
+#            chosen = choice(options)
+#            await ctx.send(chosen)
 
 def setup(bot: HanakoBot):
     cog = Interactions(bot)

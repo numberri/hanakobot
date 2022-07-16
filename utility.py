@@ -2,6 +2,7 @@ from random import choice
 from random import randint
 import asyncio
 
+import discord
 from discord.ext import commands
 from discord.ext.commands import bot
 
@@ -94,7 +95,15 @@ Hanako gives you a reminder in a given amount of time.
         await asyncio.sleep(secs)
         await ctx.send(f"**{user} {req} ({time} {unit} ago)**")    
 
-    #make an error handling for this as well
+    @remind.error
+    async def remind_error(self, ctx, error):
+        if isinstance(error, discord.ext.commands.CommandInvokeError):
+            await ctx.send("Please enter a time for me to remind you in! Make sure to enter a number for time as well as a unit.")
+        elif isinstance(error, discord.ext.commands.CommandError):
+            await ctx.send("Uh-oh, Avery made a mistake... (" + str(error) 
+                + "\n Exception name: " + type(error).__name__ +
+                ")\nYou can report this error in the HanakoBot test " +
+                "server! https://discord.com/invite/ANb3v6bHvx") 
         
 def setup(bot: HanakoBot):
     cog = Utility(bot)

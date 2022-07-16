@@ -15,8 +15,7 @@ class JSHK(commands.Cog):
     @commands.command()
     async def chapter(self, ctx):
         """
-        Tells the time until the next TBHK chapter release. (For reference, this \
-is on the 18th of every month at midnight in Japan.)
+Tells the time until the next TBHK chapter release.
         """
         japan = pytz.timezone('Japan')
         jp_time = datetime.datetime.now(japan)
