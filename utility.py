@@ -93,6 +93,8 @@ Hanako gives you a reminder in a given amount of time.
         await ctx.send(f"**Reminding you to {req} in {time} {unit}!**")
         await asyncio.sleep(secs)
         await ctx.send(f"**{user} {req} ({time} {unit} ago)**")    
+
+    #make an error handling for this as well
         
 def setup(bot: HanakoBot):
     cog = Utility(bot)
