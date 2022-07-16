@@ -8,45 +8,6 @@ from discord.ext import commands
 from __main__ import HanakoBot
 #vsc I sure hope you know what you're doing
 
-#def japantime():
-#    japan = pytz.timezone('Japan')
-#    jp_time = datetime.datetime.now(japan)
-#    return jp_time.strftime('%Y %m %d %H %M %S').split()
-
-#def jshk_release():
-#    x = japantime()
-#    days = 17 - int(x[2])
-#    if days < 0:
-#        if int(x[1]) == 2:
-#            if int(x[0])%400 == 0:
-#                days = days + 28
-#            elif int(x[0])%100 == 0:
-#                days = days + 27
-#            elif int(x[0])%4 == 0:
-#                days = days + 28
-#            else:
-#                days = days + 27
-#        elif int(x[1]) == 4 or int(x[1]) == 6 or int(x[1]) == 9\
-#             or int(x[1]) == 11:
-#            #re-format line above
-#            days = days + 29
-#        else:
-#            days = days + 30
-#    hours = 23 - int(x[3])
-#    minutes = 60 - int(x[4])
-#    if days == 0 and hours == 0 and minutes == 0:
-#        return "The newest Toilet Bound Hanako Kun chapter has just been \
-#released! <:hk_yay:964912514179674203>"
-#    elif days == 0 and hours == 0:
-#        return f"There are {minutes} minutes until the next Toilet Bound \
-#Hanako Kun chapter."
-#    elif days == 0:
-#        return f"There are {hours} hours and {minutes} minutes until the next \
-#Toilet Bound Hanako Kun chapter."
-#    else:
-#        return f"There are {days} days, {hours} hours, and {minutes} minutes \
-#until the next Toilet Bound Hanako Kun chapter."
-
 class JSHK(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
