@@ -247,7 +247,7 @@ what it is... it's {user}! They jump out and tightly hug {receiver}.**",
                 f"**{user} tries to get {receiver}'s attention, but ends up being \
 ignored. Because of that, {user} tries to slap {receiver}. However, they \
 realise that they are too cute to be slapped, and so they hug them very \
-tightly instead."
+tightly instead.**"
                 ]
             hug = choice(hugs)
             await ctx.send(hug)
