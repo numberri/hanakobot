@@ -13,6 +13,18 @@ class Utility(commands.Cog):
         self.bot = bot
 
     @commands.command()
+    async def avatar(self, ctx, member: discord.Member=None):
+        if member == None:
+            member = ctx.author
+        embed = discord.Embed(
+            title=member.name + "'s Avatar", 
+            url= member.avatar_url,
+            colour = discord.Colour.from_rgb(55, 34, 77)
+            )
+        embed.set_image(url=member.avatar_url)
+        await ctx.send(embed=embed)
+
+    @commands.command()
     async def choose(self, ctx, *args):
         """
         Give HanakoBot a list of options divided by "|", and it will return an option for you!
@@ -101,9 +113,8 @@ Hanako gives you a reminder in a given amount of time.
             await ctx.send("Please enter a time for me to remind you in! Make sure to enter a number for time as well as a unit.")
         elif isinstance(error, discord.ext.commands.CommandError):
             await ctx.send("Uh-oh, Avery made a mistake... (" + str(error) 
-                + "\n Exception name: " + type(error).__name__ +
-                ")\nYou can report this error in the HanakoBot test " +
-                "server! https://discord.com/invite/ANb3v6bHvx") 
+                + ")\nYou can report this error in the HanakoBot test " +
+                "server! https://discord.com/invite/ANb3v6bHvx")
         
 def setup(bot: HanakoBot):
     cog = Utility(bot)
