@@ -39,7 +39,6 @@ def main():
     cogs = [
         "interactions",
         "jshk",
-        "testing",
         "utility"
     ]
     for cog in cogs:
