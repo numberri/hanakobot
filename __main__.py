@@ -11,7 +11,7 @@ keyname = "hanakobotkey2"
 
 credential = DefaultAzureCredential()
 client = SecretClient(vault_url=KVUri, credential=credential)
-botkey = client.get_secret(keyname)
+botkey = client.get_secret(keyname).value
 
 class HanakoBot(commands.Bot):
     async def on_ready(self):
