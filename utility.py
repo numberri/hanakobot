@@ -14,6 +14,9 @@ class Utility(commands.Cog):
 
     @commands.command()
     async def avatar(self, ctx, member: discord.Member=None):
+        """
+        Displays the default avatar of you or a specified user.
+        """
         if member == None:
             member = ctx.author
         embed = discord.Embed(
@@ -63,6 +66,7 @@ class Utility(commands.Cog):
         """
         if coins == None:
             coins = 1
+            c = 1
         else:
             try:
                 c = int(coins)
