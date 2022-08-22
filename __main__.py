@@ -2,6 +2,16 @@ import discord
 from discord.ext import commands
 from discord.ext.commands import bot
 import discord.ext.commands.errors
+from azure.keyvault.secrets import SecretClient
+from azure.identity import DefaultAzureCredential
+
+keyVaultName = "HanakoKey"
+KVUri = f"https://{keyVaultName}.vault.azure.net"
+keyname = "hanakobotkey2"
+
+credential = DefaultAzureCredential()
+client = SecretClient(vault_url=KVUri, credential=credential)
+botkey = client.get_secret(keyname)
 
 class HanakoBot(commands.Bot):
     async def on_ready(self):
@@ -35,8 +45,7 @@ def main():
     for cog in cogs:
         bot.load_extension(f"{cog}")
     
-    bot.run('OTU1NjExOTY0NTYwNzc3MjM2.YjkM_g.4OMkshGrC0Ml-YflykuVvo4T1Io')
-    #todo: change this to use an .env file
+    bot.run(botkey)
 
 main()
-#version: 1.0.3
+#version: 1.2.0
