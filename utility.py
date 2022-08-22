@@ -62,7 +62,7 @@ class Utility(commands.Cog):
         Flip a given amount of coins.
         """
         if coins == None:
-            c = 1
+            coins = 1
         else:
             try:
                 c = int(coins)
@@ -76,7 +76,14 @@ class Utility(commands.Cog):
                 heads += 1
             elif n == 1:
                 tails += 1
-        await ctx.send(f"**You flipped {coins} coins!**\nHeads: **{heads}**\nTails: **{tails}**")
+        if coins == 1:
+            if heads == 1:
+                result = "heads"
+            else:
+                result = "tails"
+            await ctx.send(f"**You flipped a coin! It landed on {result}.**")
+        else:
+            await ctx.send(f"**You flipped {coins} coins!**\nHeads: **{heads}**\nTails: **{tails}**")
 
     @commands.command()
     async def remind(self, ctx, time, unit, *args):
