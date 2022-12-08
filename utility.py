@@ -50,14 +50,18 @@ class Utility(commands.Cog):
         Roll a die with a given amount of sides.
         """
         if sides == None:
-            dsides = 6
+            sides = 6
+            #dsides = 6
         else:
             try:
-                dsides = int(sides)
+                sides = int(sides)
             except:
                 await ctx.send("I'll need to know the number of sides for your diceroll...")
-        result = randint(1, dsides)
-        await ctx.send(f"**You rolled a die with {sides} sides and got a {str(result)}!**")
+        if sides == 1 or sides == 0:
+            await ctx.send("You need at least two sides to roll a die!")
+        else:
+            result = randint(1, sides)
+            await ctx.send(f"**You rolled a die with {sides} sides and got a {str(result)}!**")
 
     @commands.command()
     async def coinflip(self, ctx, coins = None):
@@ -80,12 +84,14 @@ class Utility(commands.Cog):
                 heads += 1
             elif n == 1:
                 tails += 1
-        if coins == 1:
+        if coins == 1 or c == 1:
             if heads == 1:
                 result = "heads"
             else:
                 result = "tails"
             await ctx.send(f"**You flipped a coin! It landed on {result}.**")
+        elif coins == 0:
+            await ctx.send("**You need to flip at least one coin...**")
         else:
             await ctx.send(f"**You flipped {coins} coins!**\nHeads: **{heads}**\nTails: **{tails}**")
 
@@ -112,8 +118,9 @@ Hanako gives you a reminder in a given amount of time.
             secs = x * 3600
         elif unit == "d" or unit == "day" or unit == "days":
             secs = x * 86400
-        else:
-            raise NotImplementedError
+        #else:
+        #    raise NotImplementedError
+        #may be causing double errors
         await ctx.send(f"**Reminding you to {req} in {time} {unit}!**")
         await asyncio.sleep(secs)
         await ctx.send(f"**{user} {req} ({time} {unit} ago)**")    
