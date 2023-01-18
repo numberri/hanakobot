@@ -39,7 +39,9 @@ class Utility(commands.Cog):
         else:
             choicelist = choices.split("|")
             if len(choicelist) == 1:
-                await ctx.send(f"*{user}, I'll need more than one option to choose from...*")
+                choicelist = choices.split(" or ")
+                if len(choicelist) == 1:
+                    await ctx.send(f"*{user}, I'll need more than one option to choose from...*")
             else:
                 chosen = choice(choicelist).strip()
                 await ctx.send(f"{user}, my choice is **{chosen}**!")
