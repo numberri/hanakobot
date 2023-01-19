@@ -1491,7 +1491,7 @@ yeah. I died already..."
         else:
             receiver = f"<@{member.id}>"
             options = [
-                f "**{receiver} gets turned into a donut by {user}.**",
+                f"**{receiver} gets turned into a donut by {user}.**",
                 f"**It seems that {receiver} has gotten killed yet another time... Just like a certain \
 someone else we k- Oh... too soon? <:ms_stand:1065241097242161213>**",
                 f"<:teru_small:973999293398663279> **{receiver} gets exorcised by Teru and {user}. To the Far Shore with you!**",
