@@ -1,4 +1,8 @@
 # Update History
+
+## 2.0.1
+- Fixes bug in /chapter where if the current month's chapter was on a weekend or public holiday, but the predicted chapter release date has passed, the bot will still give the disclaimer that the release may be irregular for the next month.
+
 ## 2.0
 - Moves __all commands__ to slash commands, and changes the library from discord.py to py-cord
 - Fixes edge cases in /chapter where the release is on a Japanese public holiday or Sunday, and adds a disclaimer that the release date may be irregular on these days and Saturdays
