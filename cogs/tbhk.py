@@ -81,7 +81,7 @@ class Tbhk(commands.Cog):
         """
         Tells the time until the next TBHK chapter release.
         """
-        #await ctx.respond(
+        next_release = next_manga_release()
         countdown = release_countdown(next_manga_release())
         japan = pytz.timezone('Japan')
         jp_time = datetime.datetime.now(japan)
@@ -99,10 +99,12 @@ class Tbhk(commands.Cog):
                 response = f"There are {countdown[1]} hours, and {countdown[2]} minutes, and {countdown[3]} seconds until the next Toilet Bound Hanako Kun chapter."
         else: #over a day
             response = f"There are {countdown[0]} days, {countdown[1]} hours, and {countdown[2]} minutes until the next Toilet Bound Hanako Kun chapter."
-        if odd_release(now[0], now[1]):
-            if odd_release(now[0], now[1]) == 1:
+        next_month = datetime_list(next_manga_release())
+        odd_check = odd_release(next_month[0], next_month[1])
+        if odd_check:
+            if odd_check == 1:
                 response += "\n-# Note that the regular release date is on a Saturday, and may be a day earlier than HanakoBot says."
-            elif odd_release(now[0], now[1]) == 2:
+            elif odd_check == 2:
                 response += "\n-# Note that the regular release date is on a Sunday, and is probably on the 17th - but may be a day earlier (or later) than HanakoBot says."
             else:
                 response += "\n-# Note that the regular release date is on a Japanese public holiday, and the release is most likely on the 15th this month."
