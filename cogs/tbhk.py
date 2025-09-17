@@ -18,8 +18,7 @@ def release_date(year: int, month: int):
     elif month in [7, 9]:
         if normal_release.weekday() == 0:
             return datetime.datetime(year, month, 15, 0, 0, 0)
-    else:
-        return normal_release
+    return normal_release
 
 def odd_release(year: int, month: int):
     """
